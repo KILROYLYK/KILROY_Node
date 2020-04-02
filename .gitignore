@@ -9,8 +9,7 @@
 #Files
 *.mp3
 *.mp4
-main.js
-/webpack.config.js
+app.js
 
 #Folders
 
