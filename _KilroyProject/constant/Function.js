@@ -65,5 +65,4 @@ class Function {
     }
 }
 
-const FN = new Function();
-module.exports = FN;
+module.exports = new Function();
