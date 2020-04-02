@@ -20,3 +20,8 @@ const server = http.createServer(app); // 创建服务器
 server.listen(port); // 监听端口
 server.on('error', Function.onError);
 server.on('listening', Function.onListening.bind(this, server));
+
+/**
+ * 数据库
+ */
+require('../controller/database');
