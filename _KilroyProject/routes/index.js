@@ -1,11 +1,12 @@
 const express = require('express'),
     router = express.Router();
 
-/**
- * Index
- */
+// Index
 router.get('/', function (req, res, next) {
-    res.send('11111111111');
+    res.render('index', {
+        title: 'KILROY',
+        brief: 'NodeJS Server'
+    });
 });
 
 module.exports = router;
