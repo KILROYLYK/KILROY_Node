@@ -1,37 +1,30 @@
-const debug = require('debug')('kilroy-node:server');
+const DataBase = require('../database/database'),
+    debug = require('debug')('kilroy-node:server');
 
-/**
- * Function
- */
-class Function {
+module.exports = {
     /**
-     * 标准化端口
-     * 将端口标准化为数字，字符串或false
+     * 标准化端口（将端口标准化为数字，字符串或false）
+     * @param {number|string|boolean} port 端口
+     * @return {number|string|boolean} 标准化结果
      */
-    normalizePort(val) {
-        var port = parseInt(val, 10);
+    normalizePort(port) {
+        const portNum = parseInt(port, 10); // 十进制整数
         
-        if (isNaN(port)) {
-            // named pipe
-            return val;
-        }
+        if (isNaN(portNum)) return port; // 没有数字的字符串
         
-        if (port >= 0) {
-            // port number
-            return port;
-        }
+        if (portNum >= 0) return portNum; // 整数
         
         return false;
-    }
+    },
     
     /**
-     * 错误事件
-     * HTTP服务器“错误”事件的事件侦听器
+     * 监听错误事件（HTTP服务器“错误”事件的事件侦听器）
+     * @param {number|string|boolean} port 端口
+     * @param {Object} error 错误对象
+     * @return {void}
      */
-    onError(error) {
-        if (error.syscall !== 'listen') {
-            throw error;
-        }
+    onError(port, error) {
+        if (error.syscall !== 'listen') throw error;
         
         const bind = typeof port === 'string'
             ? 'Pipe ' + port
@@ -50,11 +43,12 @@ class Function {
             default:
                 throw error;
         }
-    }
+    },
     
     /**
-     * 监听事件
-     * HTTP服务器“监听”事件的事件侦听器。
+     * 监听监听事件（HTTP服务器“监听”事件的事件侦听器）
+     * @param {Object} server 服务器对象
+     * @return {void}
      */
     onListening(server) {
         const addr = server.address(),
@@ -62,7 +56,18 @@ class Function {
                 ? 'pipe ' + addr
                 : 'port ' + addr.port;
         debug('Listening on ' + bind);
+    },
+    
+    //----------Redis----------//
+    
+    //----------SQL----------//
+    /**
+     * 查询数据
+     * @param {string} type 请求类型
+     * @param {string} sql SQL名称
+     * @return {void}
+     */
+    async queryData(type, sql) {
+        return await DataBase.mysql[type](sql);
     }
-}
-
-module.exports = new Function();
+};
