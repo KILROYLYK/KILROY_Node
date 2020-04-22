@@ -10,6 +10,7 @@
 *.mp3
 *.mp4
 main.js
+main.ts
 
 #Folders
 /_KilroyProject/database
