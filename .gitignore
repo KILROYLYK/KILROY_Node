@@ -1,18 +1,26 @@
+# Public
 /.DS_Store
 /.eslintrc.js
 /.eslintignore
+/tsconfig.json
+/tsconfig.tsbuildinfo
+/tslint.json
 /package.json
 /package-lock.json
+/webpack.config.js
 /.idea
 /node_modules
 
-#Files
-*.mp3
-*.mp4
+# Files
 main.js
+main.jsx
 main.ts
+main.tsx
 
-#Folders
+# Folders
 /_KilroyProject/database
 /_KilroyProject/routes
 
+# Media
+*.mp3
+*.mp4
