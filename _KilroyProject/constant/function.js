@@ -27,6 +27,7 @@ const Function = {
      */
     error: (status, error, reject = null) => {
         if (error) {
+            console.log(error);
             reject && reject(error);
             throw error;
         }
