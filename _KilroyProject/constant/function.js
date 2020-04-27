@@ -65,7 +65,7 @@ const Function = {
      * 查询数据
      * @param {string} type 请求类型
      * @param {string} sql SQL名称
-     * @return {void}
+     * @return {Promise}
      */
     async queryData(type, sql) {
         return await DataBase.mysql[type](sql);
