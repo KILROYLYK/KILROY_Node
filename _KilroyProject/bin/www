@@ -4,8 +4,8 @@
  * 模块
  */
 const http = require('http'),
-    Global = require('../constant/Global'),
-    Function = require('../constant/Function'),
+    Global = require('../constant/global'),
+    Function = require('../constant/function'),
     app = require('../main');
 
 /**

@@ -1,7 +1,7 @@
-const DataBase = require('../database/database'),
+const DataBase = require('../database/_DataBase'),
     debug = require('debug')('kilroy-node:server');
 
-module.exports = {
+const Function = {
     /**
      * 标准化端口（将端口标准化为数字，字符串或false）
      * @param {number|string|boolean} port 端口
@@ -60,7 +60,6 @@ module.exports = {
     
     //----------Redis----------//
     
-    
     //----------SQL----------//
     /**
      * 查询数据
@@ -72,3 +71,5 @@ module.exports = {
         return await DataBase.mysql[type](sql);
     }
 };
+
+module.exports = Function;
