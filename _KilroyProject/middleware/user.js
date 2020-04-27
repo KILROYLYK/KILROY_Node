@@ -5,7 +5,7 @@ const middleware = { // 中间件
      * 获取用户数据列表
      * @param {Object} req // 请求
      * @param {Object} res // 响应
-     * @return {Promise<void>} 异步
+     * @return {Promise} 异步
      */
     async getUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
