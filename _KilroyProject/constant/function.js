@@ -1,7 +1,38 @@
-const DataBase = require('../database/_DataBase'),
-    debug = require('debug')('kilroy-node:server');
+const debug = require('debug')('kilroy-node:server');
+
+const DataBase = require('../database/_DataBase');
 
 const Function = {
+    //---------- Public ----------//
+    /**
+     * 处理信息
+     * @param {number} status 状态码
+     * @param {string} data 数据
+     * @return {string} 处理后数据
+     */
+    process: (status, data) => {
+        return JSON.parse({
+            errorCode: status,
+            errorMessage: DataBase.status[status],
+            data: data
+        });
+    },
+    
+    /**
+     * 错误信息
+     * @param {number} status 状态码
+     * @param {Object} error 错误信息
+     * @param {Function} reject 拒绝
+     * @return {void}
+     */
+    error: (status, error, reject = null) => {
+        if (error) {
+            reject && reject(error);
+            throw error;
+        }
+    },
+    
+    //---------- Server ----------//
     /**
      * 标准化端口（将端口标准化为数字，字符串或false）
      * @param {number|string|boolean} port 端口
@@ -56,19 +87,6 @@ const Function = {
                 ? 'pipe ' + addr
                 : 'port ' + addr.port;
         debug('Listening on ' + bind);
-    },
-    
-    //----------Redis----------//
-    
-    //----------SQL----------//
-    /**
-     * 查询数据
-     * @param {string} type 请求类型
-     * @param {string} sql SQL名称
-     * @return {Promise}
-     */
-    async queryData(type, sql) {
-        return await DataBase.mysql[type](sql);
     }
 };
 

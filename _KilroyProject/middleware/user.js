@@ -1,4 +1,4 @@
-const Function = require('../constant/function');
+const DataBase = require('../database/_DataBase');
 
 const middleware = { // 中间件
     /**
@@ -9,7 +9,7 @@ const middleware = { // 中间件
      */
     async getUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
-        const data = await Function.queryData('get', 'queryUserList');
+        const data = await DataBase.queryData('get', 'queryUserList');
         res.send(data);
     }
 };
