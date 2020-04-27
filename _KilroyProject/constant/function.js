@@ -1,6 +1,6 @@
 const debug = require('debug')('kilroy-node:server');
 
-const DataBase = require('../database/_DataBase');
+const Status = require('../constant/status');
 
 const Function = {
     //---------- Public ----------//
@@ -11,9 +11,9 @@ const Function = {
      * @return {string} 处理后数据
      */
     process: (status, data) => {
-        return JSON.parse({
+        return JSON.stringify({
             errorCode: status,
-            errorMessage: DataBase.status[status],
+            errorMessage: Status[status],
             data: data
         });
     },

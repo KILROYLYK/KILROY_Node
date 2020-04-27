@@ -1,5 +1,5 @@
 const Global = {
-    port: process.env.PORT || '723' // 端口（0-65536）
+    port: '723' // 端口（0-65536）
 };
 
 module.exports = Global;

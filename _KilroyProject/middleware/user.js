@@ -1,6 +1,6 @@
 const DataBase = require('../database/_DataBase');
 
-const middleware = { // 中间件
+const Middleware = { // 中间件
     /**
      * 获取用户数据列表
      * @param {Object} req // 请求
@@ -14,6 +14,6 @@ const middleware = { // 中间件
     }
 };
 
-module.exports = middleware;
+module.exports = Middleware;
 
 
