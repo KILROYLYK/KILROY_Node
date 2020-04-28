@@ -9,7 +9,7 @@ const Middleware = { // 中间件
      */
     async getUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
-        const data = await DataBase.MySQL.getData( 'user');
+        const data = await DataBase.MySQL.getData('user');
         // const data = await DataBase.Redis.getData( 'user');
         res.send(data);
     }
