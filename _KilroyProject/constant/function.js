@@ -5,12 +5,41 @@ const Status = require('../constant/status');
 const Function = {
     //---------- Public ----------//
     /**
+     * 获取随机整数
+     * @param {number} n1 范围1
+     * @param {number} n2 范围2
+     * @return {number} 返回随机数
+     */
+    getRandomInt(n1, n2) {
+        const _this = this;
+        return Math.floor(Math.random() * (n2 - n1 + 1) + n1);
+    },
+    
+    /**
+     * 解析接口参数
+     * @param {Object} req 请求
+     * @return {object} 数据
+     */
+    parse(req) {
+        const query = req._parsedOriginalUrl.query.split('&');
+        
+        let data = {};
+        
+        query.forEach((v, i, a) => {
+            const value = v.split('=');
+            data[value[0]] = value[1];
+        });
+        
+        return data;
+    },
+    
+    /**
      * 处理信息
      * @param {number} status 状态码
      * @param {string} data 数据
      * @return {string} 处理后数据
      */
-    process: (status, data) => {
+    process(status, data) {
         return JSON.stringify({
             errorCode: status,
             errorMessage: Status[status],
@@ -25,7 +54,7 @@ const Function = {
      * @param {Function} reject 拒绝
      * @return {void}
      */
-    error: (status, error, reject = null) => {
+    error(status, error, reject = null) {
         if (error) {
             // console.log(error);
             reject && reject(error);

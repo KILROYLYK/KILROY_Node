@@ -1,5 +1,7 @@
 const DataBase = require('../database/_DataBase');
 
+const Function = require('../constant/function');
+
 const Middleware = { // 中间件
     /**
      * 添加用户数据
@@ -9,13 +11,13 @@ const Middleware = { // 中间件
      */
     async addUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
-        const data = await DataBase.addData('MySQL', 'user', {
-            id: 1,
-            name: 111,
-            password: 111,
-            competence: 111
+        const data = Function.parse(req);
+        const result = await DataBase.addData('MySQL', 'user', {
+            name: data.name,
+            password: data.password,
+            competence: data.competence
         });
-        res.send(data);
+        res.send(result);
     },
     
     /**
@@ -26,8 +28,8 @@ const Middleware = { // 中间件
      */
     async getUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
-        const data = await DataBase.getData('MySQL', 'user');
-        res.send(data);
+        const result = await DataBase.getData('MySQL', 'user');
+        res.send(result);
     },
     
     /**
@@ -38,8 +40,8 @@ const Middleware = { // 中间件
      */
     async deleteUser(req, res) {
         // console.log('//////User_QueryUserList', req, res);
-        const data = await DataBase.deleteData('MySQL', 'user', 'id=1');
-        res.send(data);
+        const result = await DataBase.deleteData('MySQL', 'user', 'id=1');
+        res.send(result);
     }
 };
 
