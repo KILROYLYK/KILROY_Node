@@ -10,7 +10,7 @@ const Main = require('../main');
 /**
  * 端口
  */
-const port = Function.normalizePort(Global.port); //创建端口
+const port = Function.normalizePort(Global.port); // 创建端口
 Main.set('port', port); // 设置端口
 
 /**
