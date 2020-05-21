@@ -1,5 +1,5 @@
 const Global = {
-    port: '723' // 端口（0-65536）
+    port: '3000' // 端口（0-65536）
 };
 
 module.exports = Global;
