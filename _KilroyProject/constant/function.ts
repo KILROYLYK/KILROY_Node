@@ -57,14 +57,14 @@ export default class GlobalFunction {
      * 错误信息
      * @param {number} status 状态码
      * @param {*} error 错误信息
-     * @param {Function} reject 拒绝
+     * @param {Function} callback 拒绝
      * @return {void}
      */
-    public static error(status: number, error: any, reject?: Function): void {
+    public static error(status: number, error: any, callback?: Function): void {
         const _this = this;
         if (error) {
             // console.log(error);
-            reject && reject(error);
+            callback && callback(error);
             throw error;
         }
     }
