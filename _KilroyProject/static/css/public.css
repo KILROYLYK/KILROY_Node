@@ -1,9 +1,10 @@
 html,
 body {
   position: relative;
+  padding: 10px;
 }
 body {
-  font-size: 0.12rem;
+  font-size: 0.16rem;
   background-color: #222222;
   color: #ffffff;
 }
