@@ -1,5 +1,4 @@
-import Function from '../constant/function';
-import DataBase from '../database/_DataBase';
+import Global from '../constant/global';
 
 // 中间件
 const Middleware = {
@@ -11,8 +10,8 @@ const Middleware = {
      */
     async addUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
-        const data = Function.parse(req);
-        const result = await DataBase.addData('MySQL', 'user', {
+        const data = Global.Function.parse(req);
+        const result = await Global.DataBase.addData('MySQL', 'user', {
             name: data.name,
             password: data.password,
             competence: data.competence
@@ -28,7 +27,7 @@ const Middleware = {
      */
     async getUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
-        const result = await DataBase.getData('MySQL', 'user');
+        const result = await Global.DataBase.getData('MySQL', 'user');
         res.send(result);
     },
     
@@ -40,7 +39,7 @@ const Middleware = {
      */
     async deleteUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
-        const result = await DataBase.deleteData('MySQL', 'user', 'id=1');
+        const result = await Global.DataBase.deleteData('MySQL', 'user', 'id=1');
         res.send(result);
     }
 };

@@ -1,37 +1,42 @@
-const debug = require('debug')('kilroy-node:server');
+import Status from '../constant/status'; // 状态码
 
-const Status = require('../constant/status');
+import debug from 'debug';
 
-const Function = {
-    //---------- Public ----------//
+const Debug = debug('kilroy-node:server');
+
+/**
+ * 函数
+ */
+export default class GlobalFunction {
+    // ------ Public ------ //
     /**
      * 获取随机整数
      * @param {number} n1 范围1
      * @param {number} n2 范围2
      * @return {number} 返回随机数
      */
-    getRandomInt(n1, n2) {
+    public static getRandomInt(n1: number, n2: number): number {
         const _this = this;
         return Math.floor(Math.random() * (n2 - n1 + 1) + n1);
-    },
+    }
     
     /**
      * 解析接口参数
-     * @param {Object} req 请求
-     * @return {object} 数据
+     * @param {*} req 请求
+     * @return {*} 数据
      */
-    parse(req) {
-        const query = req._parsedOriginalUrl.query.split('&');
+    public static parse(req: any): any {
+        const _this = this,
+            query = req._parsedOriginalUrl.query.split('&'),
+            data = Object.create(null);
         
-        let data = {};
-        
-        query.forEach((v, i, a) => {
+        query.forEach((v: string, i: number, a: string[]) => {
             const value = v.split('=');
             data[value[0]] = value[1];
         });
         
         return data;
-    },
+    }
     
     /**
      * 处理信息
@@ -39,52 +44,57 @@ const Function = {
      * @param {string} data 数据
      * @return {string} 处理后数据
      */
-    process(status, data) {
+    public static process(status: number, data: string): string {
+        const _this = this;
         return JSON.stringify({
             errorCode: status,
             errorMessage: Status[status],
-            data: data
+            data
         });
-    },
+    }
     
     /**
      * 错误信息
      * @param {number} status 状态码
-     * @param {Object} error 错误信息
+     * @param {*} error 错误信息
      * @param {Function} reject 拒绝
      * @return {void}
      */
-    error(status, error, reject = null) {
+    public static error(status: number, error: any, reject?: Function): void {
+        const _this = this;
         if (error) {
             // console.log(error);
             reject && reject(error);
             throw error;
         }
-    },
+    }
     
-    //---------- Server ----------//
+    // ------ Server ------ //
     /**
      * 标准化端口（将端口标准化为数字，字符串或false）
-     * @param {number|string|boolean} port 端口
-     * @return {number|string|boolean} 标准化结果
+     * @param {*} port 端口
+     * @return {*} 标准化结果
      */
-    normalizePort(port) {
-        const portNum = parseInt(port, 10); // 十进制整数
+    public static normalizePort(port: any): any {
+        const _this = this,
+            portNum = parseInt(String(port), 10); // 十进制整数
         
         if (isNaN(portNum)) return port; // 没有数字的字符串
         
         if (portNum >= 0) return portNum; // 整数
         
         return false;
-    },
+    }
     
     /**
      * 监听错误事件（HTTP服务器“错误”事件的事件侦听器）
-     * @param {number|string|boolean} port 端口
-     * @param {Object} error 错误对象
+     * @param {*} port 端口
+     * @param {*} error 错误对象
      * @return {void}
      */
-    onError(port, error) {
+    public static onError(port: any, error: any): void {
+        const _this = this;
+        
         if (error.syscall !== 'listen') throw error;
         
         const bind = typeof port === 'string'
@@ -104,20 +114,19 @@ const Function = {
             default:
                 throw error;
         }
-    },
+    }
     
     /**
      * 监听监听事件（HTTP服务器“监听”事件的事件侦听器）
-     * @param {Object} server 服务器对象
+     * @param {*} server 服务器对象
      * @return {void}
      */
-    onListening(server) {
-        const addr = server.address(),
+    public static onListening(server: any): void {
+        const _this = this,
+            addr = server.address(),
             bind = typeof addr === 'string'
                 ? 'pipe ' + addr
                 : 'port ' + addr.port;
-        debug('Listening on ' + bind);
+        Debug('Listening on ' + bind);
     }
 };
-
-module.exports = Function;
