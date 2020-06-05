@@ -1,15 +1,15 @@
-const DataBase = require('../database/_DataBase');
+import Function from '../constant/function';
+import DataBase from '../database/_DataBase';
 
-const Function = require('../constant/function');
-
-const Middleware = { // 中间件
+// 中间件
+const Middleware = {
     /**
      * 添加用户数据
-     * @param {Object} req // 请求
-     * @param {Object} res // 响应
+     * @param {*} req // 请求
+     * @param {*} res // 响应
      * @return {Promise}
      */
-    async addUser(req, res) {
+    async addUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
         const data = Function.parse(req);
         const result = await DataBase.addData('MySQL', 'user', {
@@ -22,11 +22,11 @@ const Middleware = { // 中间件
     
     /**
      * 获取用户数据列表
-     * @param {Object} req // 请求
-     * @param {Object} res // 响应
+     * @param {*} req // 请求
+     * @param {*} res // 响应
      * @return {Promise}
      */
-    async getUser(req, res) {
+    async getUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
         const result = await DataBase.getData('MySQL', 'user');
         res.send(result);
@@ -34,17 +34,17 @@ const Middleware = { // 中间件
     
     /**
      * 删除用户数据
-     * @param {Object} req // 请求
-     * @param {Object} res // 响应
+     * @param {*} req // 请求
+     * @param {*} res // 响应
      * @return {Promise}
      */
-    async deleteUser(req, res) {
+    async deleteUser(req: any, res: any): Promise<any> {
         // console.log('//////User_QueryUserList', req, res);
         const result = await DataBase.deleteData('MySQL', 'user', 'id=1');
         res.send(result);
     }
 };
 
-module.exports = Middleware;
+export default Middleware;
 
 
