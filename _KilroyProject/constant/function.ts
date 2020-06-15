@@ -1,8 +1,6 @@
 import Status from '../constant/status'; // 状态码
 
-import debug from 'debug';
-
-const Debug = debug('kilroy-node:server');
+const Debug = require('debug')('kilroy-node:server');
 
 /**
  * 函数
