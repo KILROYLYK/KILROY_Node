@@ -1,4 +1,4 @@
-import Global from '../constant/global';
+import Global from '../constant/_global';
 
 /**
  * 中间件

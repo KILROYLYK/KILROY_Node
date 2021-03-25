@@ -1,5 +1,5 @@
-import Function from '../constant/function'; // 函数
-import Status from '../constant/status'; // 状态码
+import Function from './function'; // 函数
+import Status from './status'; // 状态码
 import DataBase from '../database/_DataBase'; // 数据库
 
 /**
