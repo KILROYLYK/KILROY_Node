@@ -1,5 +1,5 @@
 # Public
-/.DS_Store
+.DS_Store
 /.eslintrc.js
 /.eslintignore
 /tsconfig.json
@@ -11,20 +11,19 @@
 /.idea
 /node_modules
 
-# Files
+# File
 main.js
 main.jsx
 main.ts
 main.tsx
 
-# Folders
-/_KilroyProject/bin
-/_KilroyProject/database
-/_KilroyProject/routes
+# Folder
+/_KilroyLYK
+/_KilroyProject/_Build
+/_KilroyProject/_Project/$Cache
+/_KilroyProject/_Project/_Demo/application/server
 
-# Media
+# Other
 *.mp3
 *.mp4
-
-# Pack
 *.zip
