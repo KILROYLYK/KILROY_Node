@@ -1,12 +1,10 @@
 html,
 body {
-  position: relative;
-  padding: 10px;
-}
-body {
-  font-size: 0.16rem;
-  background: #222222;
-  color: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  font-size: 0.12rem;
+  color: #000000;
 }
 a {
   cursor: pointer;
@@ -51,11 +49,11 @@ textarea:-ms-input-placeholder {
   display: none;
 }
 .disabled {
-  -webkit-filter: grayscale(100);
-  -moz-filter: grayscale(100);
-  -o-filter: grayscale(100);
-  -ms-filter: grayscale(100);
-  filter: grayscale(100);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
   pointer-events: none;
 }
 .hover:hover {
@@ -77,11 +75,11 @@ textarea:-ms-input-placeholder {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  -webkit-transform: translate(-50%, -50%) scale(0.5);
-  -moz-transform: translate(-50%, -50%) scale(0.5);
-  -o-transform: translate(-50%, -50%) scale(0.5);
-  -ms-transform: translate(-50%, -50%) scale(0.5);
-  transform: translate(-50%, -50%) scale(0.5);
+  -webkit-transform: translate(-50%, -50%) scale(1/2);
+  -moz-transform: translate(-50%, -50%) scale(1/2);
+  -o-transform: translate(-50%, -50%) scale(1/2);
+  -ms-transform: translate(-50%, -50%) scale(1/2);
+  transform: translate(-50%, -50%) scale(1/2);
 }
 .box_vertical {
   display: table;
@@ -101,47 +99,17 @@ textarea:-ms-input-placeholder {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-.rotate_screen {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 100;
-  background: -webkit-radial-gradient(#303136, #000000) ;
-  background: -moz-radial-gradient(#303136, #000000) ;
-  background: -o-radial-gradient(#303136, #000000) ;
-  background: -ms-radial-gradient(#303136, #000000) ;
-  background: radial-gradient(#303136, #000000) ;
-}
-.rotate_screen:before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 2rem;
-  height: 2rem;
-  background: url('image/rotate_screen.png');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 2rem 2rem;
-  pointer-events: none;
-}
-.rotate_screen.active {
-  display: block;
-}
-.body {
+.application {
   overflow: hidden;
   position: relative;
   z-index: 0;
+  height: 100%;
+  margin: 0 auto;
 }
-.body > .container {
+.application > .container {
   position: relative;
   z-index: 0;
+  height: 100%;
+  margin: 0 auto;
 }
 /*# sourceMappingURL=public.css.map */

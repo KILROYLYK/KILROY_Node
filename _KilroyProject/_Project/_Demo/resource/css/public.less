@@ -1,18 +1,14 @@
 // ----- Public ----- //
-@import 'base';
+@import '_global';
 
 // --- 默认 --- //
 html,
 body {
-  position: relative;
-  //height: 100%;
-  padding: 10px;
-}
-
-body {
-  font-size: 16*@px;
-  background: #222222;
-  color: @color_1;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  font-size: 12*@px;
+  color: @color_2;
 }
 
 a {
@@ -50,7 +46,7 @@ audio {
 }
 
 .disabled {
-  .filter(grayscale(100));
+  .filter(grayscale(100%));
   pointer-events: none;
 }
 
@@ -90,40 +86,20 @@ audio {
   -webkit-overflow-scrolling: touch;
 }
 
-.rotate_screen {
-  @style: fade(#303136, 100), fade(black, 100);
-  display: none;
-  .position(fixed);
-  z-index: 100;
-  .gradientRadial(@style);
-
-  &:before {
-    content: '';
-    display: block;
-    .position();
-    margin: auto;
-    .bg('rotate_screen.png', 200*@px, 200*@px, true);
-    pointer-events: none;
-  }
-
-  &.active {
-    display: block;
-  }
-}
-
-.body {
+.application {
   overflow: hidden;
   position: relative;
   z-index: 0;
   //min-width: @min_width;
   //max-width: @max_width;
-  //height: 100%;
-  //margin: 0 auto;
+  height: 100%;
+  margin: 0 auto;
 
   > .container {
     position: relative;
     z-index: 0;
-    //height: 100%;
+    height: 100%;
+    margin: 0 auto;
   }
 }
 
